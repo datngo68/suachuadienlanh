@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Final - Cấu Hình Tập Trung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .test-section {
+            background: #f0f8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .info {
+            color: #17a2b8;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧪 Test Final - Hệ Thống Cấu Hình Tập Trung</h1>
+
+    <div class="test-section">
+        <h2>📊 Thông Tin Config</h2>
+        <div class="test-item">
+            <strong>Config phone:</strong> <span id="config-phone">-</span>
+        </div>
+        <div class="test-item">
+            <strong>Config phoneRaw:</strong> <span id="config-phone-raw">-</span>
+        </div>
+        <div class="test-item">
+            <strong>Config zalo:</strong> <span id="config-zalo">-</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📞 Test Elements</h2>
+        <div class="test-item">
+            <strong>Phone link:</strong> <a href="tel:0336288888" data-phone>033.6288.888</a>
+        </div>
+        <div class="test-item">
+            <strong>Zalo link:</strong> <a href="https://zalo.me/0336288888" data-zalo-link>Chat Zalo</a>
+        </div>
+        <div class="test-item">
+            <strong>Email link:</strong> <a href="mailto:suachuadienlanh247vn@gmail.com"
+                data-email>suachuadienlanh247vn@gmail.com</a>
+        </div>
+        <div class="test-item">
+            <strong>Website link:</strong> <a href="https://suachuadienlanh247.vn"
+                data-website>suachuadienlanh247.vn</a>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔍 Debug Info</h2>
+        <div class="test-item">
+            <strong>Elements có data-phone:</strong> <span id="phone-count">-</span>
+        </div>
+        <div class="test-item">
+            <strong>Elements có data-zalo-link:</strong> <span id="zalo-count">-</span>
+        </div>
+        <div class="test-item">
+            <strong>Elements có data-email:</strong> <span id="email-count">-</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>⚡ Test Functions</h2>
+        <button onclick="testUpdateContactInfo()">Test updateContactInfo()</button>
+        <button onclick="manualUpdate()">Manual Update</button>
+        <button onclick="checkElements()">Check Elements</button>
+        <div id="test-result" class="test-item" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>✅ Kết Quả</h2>
+        <div id="final-result" class="test-item">
+            <span class="info">Đang kiểm tra...</span>
+        </div>
+    </div>
+
+    <!-- Zalo Floating Button -->
+    <a href="https://zalo.me/0336288888" class="zalo-floating" target="_blank" title="Chat Zalo" data-zalo-link>
+    </a>
+
+    <script>
+        function displayConfig() {
+            if (typeof WEBSITE_CONFIG !== 'undefined') {
+                document.getElementById('config-phone').textContent = WEBSITE_CONFIG.contact.phone;
+                document.getElementById('config-phone-raw').textContent = WEBSITE_CONFIG.contact.phoneRaw;
+                document.getElementById('config-zalo').textContent = WEBSITE_CONFIG.contact.zalo;
+            } else {
+                document.getElementById('config-phone').textContent = 'ERROR: Config not loaded!';
+            }
+        }
+
+        function countElements() {
+            const phoneCount = document.querySelectorAll('[data-phone]').length;
+            const zaloCount = document.querySelectorAll('[data-zalo-link]').length;
+            const emailCount = document.querySelectorAll('[data-email]').length;
+
+            document.getElementById('phone-count').textContent = phoneCount;
+            document.getElementById('zalo-count').textContent = zaloCount;
+            document.getElementById('email-count').textContent = emailCount;
+        }
+
+        function testUpdateContactInfo() {
+            const result = document.getElementById('test-result');
+            try {
+                if (typeof updateContactInfo === 'function') {
+                    updateContactInfo();
+                    result.innerHTML = '<span class="success">✅ updateContactInfo() chạy thành công!</span>';
+                } else {
+                    result.innerHTML = '<span class="error">❌ updateContactInfo() không tồn tại!</span>';
+                }
+            } catch (error) {
+                result.innerHTML = '<span class="error">❌ Lỗi: ' + error.message + '</span>';
+            }
+        }
+
+        function manualUpdate() {
+            const result = document.getElementById('test-result');
+            try {
+                const phoneElements = document.querySelectorAll('[data-phone]');
+                phoneElements.forEach(el => {
+                    el.textContent = '033.6288.888';
+                    el.href = 'tel:0336288888';
+                });
+
+                const zaloElements = document.querySelectorAll('[data-zalo-link]');
+                zaloElements.forEach(el => {
+                    el.href = 'https://zalo.me/0336288888';
+                });
+
+                result.innerHTML = '<span class="success">✅ Manual update completed!</span>';
+            } catch (error) {
+                result.innerHTML = '<span class="error">❌ Error: ' + error.message + '</span>';
+            }
+        }
+
+        function checkElements() {
+            const result = document.getElementById('test-result');
+            const phoneElements = document.querySelectorAll('[data-phone]');
+            const zaloElements = document.querySelectorAll('[data-zalo-link]');
+
+            let html = '<strong>Elements found:</strong><br>';
+            phoneElements.forEach((el, index) => {
+                html += `${index + 1}. Phone: "${el.textContent}" (${el.href})<br>`;
+            });
+            zaloElements.forEach((el, index) => {
+                html += `${index + 1}. Zalo: "${el.textContent}" (${el.href})<br>`;
+            });
+
+            result.innerHTML = html;
+        }
+
+        function checkFinalResult() {
+            const result = document.getElementById('final-result');
+            const phoneElements = document.querySelectorAll('[data-phone]');
+            const configLoaded = typeof WEBSITE_CONFIG !== 'undefined';
+
+            if (configLoaded && phoneElements.length > 0) {
+                const firstPhone = phoneElements[0];
+                if (firstPhone.textContent === '033.6288.888') {
+                    result.innerHTML = '<span class="success">✅ Hệ thống cấu hình tập trung hoạt động hoàn hảo!</span>';
+                } else {
+                    result.innerHTML = '<span class="error">❌ Số điện thoại chưa được cập nhật đúng!</span>';
+                }
+            } else {
+                result.innerHTML = '<span class="error">❌ Có vấn đề với config hoặc elements!</span>';
+            }
+        }
+
+        // Auto run when page loads
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                displayConfig();
+                countElements();
+                checkFinalResult();
+            }, 1000);
+        });
+    </script>
+
+    <!-- Load config -->
+    <script src="js/config.js"></script>
+
+    <style>
+        .zalo-floating {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            background: rgb(33, 150, 243);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+            animation: zaloPulse 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .zalo-floating::before {
+            content: 'Z';
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        @keyframes zaloPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.7);
+                transform: translateY(-50%) scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+                transform: translateY(-50%) scale(1.05);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+                transform: translateY(-50%) scale(1);
+            }
+        }
+    </style>
+</body>
+
+</html>
