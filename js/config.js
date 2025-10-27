@@ -13,10 +13,10 @@ const WEBSITE_CONFIG = {
 
     // Thông tin liên hệ
     contact: {
-        phone: "033.6288.888",
-        phoneRaw: "0336288888", // Số điện thoại không dấu chấm
-        zalo: "033.6288.888",
-        zaloRaw: "0336288888", // Số Zalo không dấu chấm
+        phone: "033.6288.999",
+        phoneRaw: "0336288999", // Số điện thoại không dấu chấm
+        zalo: "033.6288.999",
+        zaloRaw: "0336288999", // Số Zalo không dấu chấm
         email: "suachuadienlanh247vn@gmail.com",
         website: "suachuadienlanh247.vn"
     },
