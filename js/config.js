@@ -13,10 +13,10 @@ const WEBSITE_CONFIG = {
 
     // Thông tin liên hệ
     contact: {
-        phone: "033.6288.999",
-        phoneRaw: "0336288999", // Số điện thoại không dấu chấm
-        zalo: "033.6288.999",
-        zaloRaw: "0336288999", // Số Zalo không dấu chấm
+        phone: "0936.255.627",
+        phoneRaw: "0936255627", // Số điện thoại không dấu chấm
+        zalo: "0936.255.627",
+        zaloRaw: "0936255627", // Số Zalo không dấu chấm
         email: "suachuadienlanh247vn@gmail.com",
         website: "suachuadienlanh247.vn"
     },
@@ -26,37 +26,37 @@ const WEBSITE_CONFIG = {
         {
             name: "Cơ sở chính 1",
             address: "52 Lê Thánh Tông, Ngô Quyền, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         },
         {
             name: "Cơ sở chính 2",
             address: "16 Đông Khê, Ngô Quyền, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         },
         {
             name: "Cơ sở 3",
             address: "122 Thiên Lôi, Lê Chân, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         },
         {
             name: "Cơ sở 4",
             address: "325 Chợ Hàng, Lê Chân, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         },
         {
             name: "Cơ sở 5",
             address: "Khu 3 Đẩu Sơn, Kiến An, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         },
         {
             name: "Cơ sở 6",
             address: "Khu 3 Xã Hợp Đức, Đồ Sơn, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         },
         {
             name: "Cơ sở 7",
             address: "87 Đằng Hải, Hải An, Hải Phòng",
-            phone: "033.6288.888"
+            phone: "0936.255.627"
         }
     ],
 
@@ -64,7 +64,7 @@ const WEBSITE_CONFIG = {
     social: {
         facebook: "#", // Thay bằng link Facebook thật
         youtube: "#",  // Thay bằng link YouTube thật
-        zalo: "https://zalo.me/0336288888"
+        zalo: "https://zalo.me/0936255627"
     },
 
     // Dịch vụ
